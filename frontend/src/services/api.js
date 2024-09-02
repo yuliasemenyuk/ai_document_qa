@@ -3,9 +3,6 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 export const uploadFile = async (file) => {
   const formData = new FormData();
   formData.append('file', file);
-
-  console.log(API_BASE_URL, "API_BASE_URL");
-
   try {
     const response = await fetch(`${API_BASE_URL}/api/upload`, {
       method: 'POST',

@@ -5,29 +5,39 @@ import { askQuestion } from '../services/api';
 function QuestionForm({ setQuestionResult }) {
   const [question, setQuestion] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
-    setMessage(null);
+    setError(null);
   };
 
   const handleAskQuestion = async () => {
     if (!question.trim()) {
-      setMessage({ type: 'error', text: 'Please enter a question!' });
+      setError({ message: 'Please enter a question.' });
+      setQuestionResult(null);
       return;
     }
 
     setIsLoading(true);
-    setMessage(null);
+    setError(null);
+    setQuestionResult(null); 
 
     try {
       const result = await askQuestion(question);
       setQuestionResult(result);
-      setMessage({ type: 'success', text: 'Question answered successfully' });
     } catch (error) {
       console.error('Error asking question:', error);
-      setMessage({ type: 'error', text: 'Failed to get an answer' });
+      setQuestionResult(null);
+      if (error.response && error.response.data) {
+        const { message, details } = error.response.data;
+        setError({ 
+          message: message || 'An error occurred while processing your question.',
+          details: details
+        });
+      } else {
+        setError({ message: 'Failed to get an answer. Please try again.' });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -44,10 +54,19 @@ function QuestionForm({ setQuestionResult }) {
         disabled={isLoading}
       />
       <AskButton onClick={handleAskQuestion} disabled={isLoading}>
-        {isLoading ? 'Asking...' : 'Ask'}
+        {isLoading ? 'Processing...' : 'Ask'}
       </AskButton>
       {isLoading && <LoadingSpinner />}
-      {message && <Message type={message.type}>{message.text}</Message>}
+      {error && (
+        <Message type="error">
+          {error.message}
+          {error.details && (
+            <div style={{ marginTop: '10px', fontSize: '0.9em' }}>
+              Details: {error.details}
+            </div>
+          )}
+        </Message>
+      )}
     </QuestionFormContainer>
   );
 }

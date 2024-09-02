@@ -13,11 +13,6 @@ function FileUpload({ setUploadResult }) {
   };
 
   const handleUpload = async () => {
-    if (!file) {
-      setMessage({ type: 'error', text: 'Please select a file first!' });
-      return;
-    }
-
     setIsLoading(true);
     setMessage(null);
 
@@ -27,7 +22,7 @@ function FileUpload({ setUploadResult }) {
       setMessage({ type: 'success', text: result.message });
     } catch (error) {
       console.error('Error uploading file:', error);
-      setMessage({ type: 'error', text: 'Failed to upload file' });
+      setMessage({ type: 'error', text: error.message || 'Failed to upload file' });
     } finally {
       setIsLoading(false);
     }
@@ -36,8 +31,8 @@ function FileUpload({ setUploadResult }) {
   return (
     <FileUploadContainer>
       <SectionTitle>Upload Document</SectionTitle>
-      <FileInput type="file" onChange={handleFileChange} disabled={isLoading} />
-      <UploadButton onClick={handleUpload} disabled={isLoading}>
+      <FileInput type="file" onChange={handleFileChange} disabled={isLoading} accept=".pdf" />
+      <UploadButton onClick={handleUpload} disabled={isLoading || !file}>
         {isLoading ? 'Uploading...' : 'Upload'}
       </UploadButton>
       {isLoading && <LoadingSpinner />}
