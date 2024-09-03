@@ -93,6 +93,7 @@ Topic Modeling (Python)
 Implemented as a separate Python script.
 Uses NLTK and Gensim for text preprocessing and LDA topic modeling.
 Generates keywords/topics for uploaded documents.
+If there is en error during script run file is still uploaded to Pinecone and on UI user is informed that pdf is uploaded but topics generation failed.
 
 Vector Database (Pinecone)
 
