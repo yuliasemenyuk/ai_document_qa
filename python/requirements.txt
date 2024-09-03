@@ -1,0 +1,6 @@
+pinecone-client==2.2.1
+nltk==3.6.5
+gensim==4.1.2
+python-dotenv==0.19.2
+numpy==1.21.4
+scipy==1.7.3

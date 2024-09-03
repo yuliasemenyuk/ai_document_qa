@@ -1,17 +1,22 @@
 AI-Enhanced Document QA System
-Setup Guide
-Prerequisites:
 
+Setup Guide
+
+Prerequisites:
 Node.js (v14 or later)
+
 Python (v3.7 or later)
+
 npm (usually comes with Node.js)
+
 pip (Python package manager)
+
 
 Setup Steps:
 
 Clone and open the repository
-git clone https://github.com/yuliasemenyuk/ai-document-qa.git
-cd ai-document-qa
+git clone https://github.com/yuliasemenyuk/ai_document_qa.git
+cd ai_document_qa
 
 Set up the Node.js backend
 cd backend
