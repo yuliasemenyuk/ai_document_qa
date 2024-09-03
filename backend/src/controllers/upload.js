@@ -78,3 +78,4 @@ const uploadController = async (req, res) => {
 };
 
 module.exports = uploadController;
+
