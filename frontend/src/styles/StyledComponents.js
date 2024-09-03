@@ -116,6 +116,14 @@ export const ResultContent = styled.pre`
   line-height: 1.4;
 `;
 
+export const ResultContainer = styled.div`
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+`;
+
 const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
