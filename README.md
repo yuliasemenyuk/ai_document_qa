@@ -40,17 +40,36 @@ Start the backend server
 cd ../backend
 npm start
 
-Start the frontend development server
-cd ../frontend
+Start the frontend development server in another terminal tab
+cd ../frontend or cd frontend if you're in a root directory
 npm start
 
 Access the application
 
-Open your browser and go to http://localhost:3000 (or the port specified in your frontend configuration).
+Open your browser and go to http://localhost:3000 (or the port specified in your frontend configuration) if it wasn't opened automatically.
+
+
+Usage Instructions:
+After setting up and starting both the backend and frontend servers, you can use the AI-Enhanced Document QA System as follows:
+1. Uploading Documents
+
+Open your web browser and navigate to http://localhost:3000 (or the port specified in your frontend configuration).
+On the homepage, you'll see a "Upload Document" section.
+Click on the "Choose File" button and select a PDF document from your computer.
+Click the "Upload" button to upload the document.
+Wait for the upload to complete. You'll see a success message once the document is processed.
+
+2. Asking Questions
+
+After uploading a document (or if you already have documents in the system), scroll down to the "Ask a Question" section.
+Type your question into the text input field.
+Click the "Ask" button to submit your question.
+Wait for the system to process your question and generate an answer.
+The answer will appear below the question input, along with relevant document chunks and confidence scores.
 
 
 
-Brief Approach Explanation
+Brief Approach Explanation:
 Frontend (React)
 
 Provides a user interface for document upload and question asking.
